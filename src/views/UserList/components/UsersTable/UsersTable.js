@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { makeStyles } from '@material-ui/styles';
+import { NavLink as RouterLink } from 'react-router-dom';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
+import LockIcon from '@material-ui/icons/Lock';
 import {
   Card,
   CardActions,
@@ -16,10 +19,13 @@ import {
   TableHead,
   TableRow,
   Typography,
-  TablePagination
+  TablePagination,
+  Button
 } from '@material-ui/core';
-
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import { getInitials } from 'helpers';
+import { useDispatch } from 'react-redux';
+import CurrentAccountActions from 'reduxs/currentAccount/index';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -45,6 +51,7 @@ const UsersTable = props => {
   const { className, users, ...rest } = props;
 
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -92,6 +99,19 @@ const UsersTable = props => {
     setRowsPerPage(event.target.value);
   };
 
+  const CustomRouterLink = forwardRef((props, ref) => (
+    <div
+      ref={ref}
+      style={{ flexGrow: 1 }}
+    >
+      <RouterLink {...props} />
+    </div>
+  ));
+
+  const displayUserDetail = user => event => {
+    dispatch(CurrentAccountActions.UpdateCurrentAccount(user));
+  }
+
   return (
     <Card
       {...rest}
@@ -103,22 +123,13 @@ const UsersTable = props => {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell padding="checkbox">
-                    <Checkbox
-                      checked={selectedUsers.length === users.length}
-                      color="primary"
-                      indeterminate={
-                        selectedUsers.length > 0 &&
-                        selectedUsers.length < users.length
-                      }
-                      onChange={handleSelectAll}
-                    />
-                  </TableCell>
                   <TableCell>Name</TableCell>
                   <TableCell>Email</TableCell>
                   <TableCell>Location</TableCell>
                   <TableCell>Phone</TableCell>
                   <TableCell>DOB</TableCell>
+                  <TableCell>Details</TableCell>
+                  <TableCell>Status</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -129,14 +140,7 @@ const UsersTable = props => {
                     key={user.id}
                     selected={selectedUsers.indexOf(user.id) !== -1}
                   >
-                    <TableCell padding="checkbox">
-                      <Checkbox
-                        checked={selectedUsers.indexOf(user.id) !== -1}
-                        color="primary"
-                        onChange={event => handleSelectOne(event, user.id)}
-                        value="true"
-                      />
-                    </TableCell>
+
                     <TableCell>
                       <div className={classes.nameContainer}>
                         <Avatar
@@ -155,6 +159,23 @@ const UsersTable = props => {
                     <TableCell>{user.phone}</TableCell>
                     <TableCell>
                       {moment(user.dob).format('DD/MM/YYYY')}
+                    </TableCell>
+                    <TableCell
+                      component={CustomRouterLink}
+                      to="account"
+                      onClick={displayUserDetail(user)}>
+                      <Button>
+                        <LibraryBooksIcon />
+                      </Button>
+                    </TableCell>
+                    <TableCell padding="checkbox">
+                      <Button
+                        className={classes.uploadButton}
+                        color="primary"
+                        variant="text"
+                      >
+                        {user.account_status === 1 ? <LockOpenIcon /> : <LockIcon />}
+                      </Button>
                     </TableCell>
                   </TableRow>
                 ))}

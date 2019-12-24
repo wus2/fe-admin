@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/styles';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
+import LockIcon from '@material-ui/icons/Lock';
 import {
   Card,
   CardActions,
@@ -13,6 +15,8 @@ import {
   Button,
   LinearProgress
 } from '@material-ui/core';
+import { useSelector, useDispatch } from 'react-redux';
+import CurrentAccountActions from '../../../../reduxs/currentAccount/index';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -38,14 +42,13 @@ const AccountProfile = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
+  const dispatch = useDispatch();
 
-  const user = {
-    name: 'Shen Zhi',
-    city: 'Los Angeles',
-    country: 'USA',
-    timezone: 'GTM-7',
-    avatar: '/images/avatars/avatar_11.png'
-  };
+  const user = useSelector(state => state.CurrentAccount);
+
+  const toggleLockAccount = () => {
+    dispatch(CurrentAccountActions.ToggleStatus(user.id, user.account_status));
+  }
 
   return (
     <Card
@@ -59,21 +62,21 @@ const AccountProfile = props => {
               gutterBottom
               variant="h2"
             >
-              John Doe
+              {user.name}
             </Typography>
             <Typography
               className={classes.locationText}
               color="textSecondary"
               variant="body1"
             >
-              {user.city}, {user.country}
+              {user.city}
             </Typography>
             <Typography
               className={classes.dateText}
               color="textSecondary"
               variant="body1"
             >
-              {moment().format('hh:mm A')} ({user.timezone})
+              {moment(user.dob).format('DD/MM/YYYY')}
             </Typography>
           </div>
           <Avatar
@@ -95,10 +98,10 @@ const AccountProfile = props => {
           className={classes.uploadButton}
           color="primary"
           variant="text"
+          onClick={toggleLockAccount}
         >
-          Upload picture
+          {user.account_status === 1 ? <LockOpenIcon /> : <LockIcon />}
         </Button>
-        <Button variant="text">Remove picture</Button>
       </CardActions>
     </Card>
   );

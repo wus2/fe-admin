@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
+import moment from 'moment';
 import {
   Card,
   CardHeader,
@@ -9,9 +10,9 @@ import {
   CardActions,
   Divider,
   Grid,
-  Button,
   TextField
 } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -21,14 +22,9 @@ const AccountDetails = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
-
+  const user = useSelector(state => state.CurrentAccount);
   const [values, setValues] = useState({
-    firstName: 'Shen',
-    lastName: 'Zhi',
-    email: 'shen.zhi@devias.io',
-    phone: '',
-    state: 'Alabama',
-    country: 'USA'
+    ...user
   });
 
   const handleChange = event => {
@@ -37,21 +33,6 @@ const AccountDetails = props => {
       [event.target.name]: event.target.value
     });
   };
-
-  const states = [
-    {
-      value: 'alabama',
-      label: 'Alabama'
-    },
-    {
-      value: 'new-york',
-      label: 'New York'
-    },
-    {
-      value: 'san-francisco',
-      label: 'San Francisco'
-    }
-  ];
 
   return (
     <Card
@@ -79,14 +60,13 @@ const AccountDetails = props => {
             >
               <TextField
                 fullWidth
-                helperText="Please specify the first name"
-                label="First name"
+                label="Username"
                 margin="dense"
-                name="firstName"
-                onChange={handleChange}
+                name="Username"
                 required
-                value={values.firstName}
+                value={values.username}
                 variant="outlined"
+                disabled
               />
             </Grid>
             <Grid
@@ -96,13 +76,13 @@ const AccountDetails = props => {
             >
               <TextField
                 fullWidth
-                label="Last name"
+                label="Name"
                 margin="dense"
-                name="lastName"
-                onChange={handleChange}
+                name="Name"
                 required
-                value={values.lastName}
+                value={values.name}
                 variant="outlined"
+                disabled
               />
             </Grid>
             <Grid
@@ -115,10 +95,9 @@ const AccountDetails = props => {
                 label="Email Address"
                 margin="dense"
                 name="email"
-                onChange={handleChange}
-                required
                 value={values.email}
                 variant="outlined"
+                disabled
               />
             </Grid>
             <Grid
@@ -135,6 +114,7 @@ const AccountDetails = props => {
                 type="number"
                 value={values.phone}
                 variant="outlined"
+                disabled
               />
             </Grid>
             <Grid
@@ -144,26 +124,15 @@ const AccountDetails = props => {
             >
               <TextField
                 fullWidth
-                label="Select State"
+                label="DOB"
                 margin="dense"
-                name="state"
-                onChange={handleChange}
+                name="DOB"
                 required
-                select
-                // eslint-disable-next-line react/jsx-sort-props
                 SelectProps={{ native: true }}
-                value={values.state}
+                value={moment(values.dob).format('DD/MM/YYYY')}
                 variant="outlined"
-              >
-                {states.map(option => (
-                  <option
-                    key={option.value}
-                    value={option.value}
-                  >
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
+                disabled
+              />
             </Grid>
             <Grid
               item
@@ -172,26 +141,19 @@ const AccountDetails = props => {
             >
               <TextField
                 fullWidth
-                label="Country"
+                label="Gender"
                 margin="dense"
-                name="country"
-                onChange={handleChange}
+                name="Gender"
                 required
-                value={values.country}
+                value={values.gender}
                 variant="outlined"
+                disabled
               />
             </Grid>
           </Grid>
         </CardContent>
         <Divider />
-        <CardActions>
-          <Button
-            color="primary"
-            variant="contained"
-          >
-            Save details
-          </Button>
-        </CardActions>
+        <CardActions />
       </form>
     </Card>
   );

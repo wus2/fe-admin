@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import * as serviceWorker from './serviceWorker';
-import App from './App';
+import ReduxRoot from './ReduxRoot';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<ReduxRoot />, document.getElementById('root'));
 
 serviceWorker.unregister();

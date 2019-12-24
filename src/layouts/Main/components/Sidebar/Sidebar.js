@@ -9,8 +9,10 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import ImageIcon from '@material-ui/icons/Image';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import SettingsIcon from '@material-ui/icons/Settings';
+import UserListActions from 'reduxs/listUser/index';
 
 import { Profile, SidebarNav } from './components';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -39,6 +41,9 @@ const Sidebar = props => {
   const { open, variant, onClose, className, ...rest } = props;
 
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  dispatch(UserListActions.GetUserList());
 
   const pages = [
     {
