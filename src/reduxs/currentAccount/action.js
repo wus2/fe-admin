@@ -1,4 +1,5 @@
 import ActionTypes from './actionTypes';
+import UserListActionType from 'reduxs/listUser/actionTypes';
 import * as HttpClient from '../../core/services/HttpClient';
 
 const UpdateCurrentAccount = (account) => async dispatch => {
@@ -11,7 +12,8 @@ const ToggleStatus = (id, status) => async dispatch => {
 
   const newStatus = status === 1 ? 2 : 1;
 
-  dispatch({ type: ActionTypes.TOGGLE_STATUS, payload: newStatus })
+  dispatch({ type: ActionTypes.TOGGLE_STATUS, payload: newStatus });
+  dispatch({ type: UserListActionType.UPDATE_USER_LIST, payload: { id, account_status: newStatus } });
   await HttpClient.sendPut(url);
 }
 
