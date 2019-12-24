@@ -8,11 +8,11 @@ import {
   CardActions,
   Typography,
   Grid,
-  Divider
+  Divider,
+  Button
 } from '@material-ui/core';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import GetAppIcon from '@material-ui/icons/GetApp';
-
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 const useStyles = makeStyles(theme => ({
   root: {},
   imageContainer: {
@@ -65,6 +65,37 @@ const ProductCard = props => {
         </Typography>
       </CardContent>
       <Divider />
+      <CardActions>
+        <Grid
+          container
+          justify="space-between"
+        >
+          <Button
+            className={classes.statsItem}
+            item
+          >
+            <DeleteIcon className={classes.statsIcon} />
+            <Typography
+              display="inline"
+              variant="body2"
+            >
+              Delete
+            </Typography>
+          </Button>
+          <Button
+            className={classes.statsItem}
+            item
+          >
+            <EditIcon className={classes.statsIcon} />
+            <Typography
+              display="inline"
+              variant="body2"
+            >
+              {product.totalDownloads} Edit
+            </Typography>
+          </Button>
+        </Grid>
+      </CardActions>
     </Card>
   );
 };

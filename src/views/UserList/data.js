@@ -1,143 +1,163 @@
-import uuid from 'uuid/v1';
-
 export default [
   {
-    id: uuid(),
-    name: 'Ekaterina Tankova',
-    address: {
-      country: 'USA',
-      state: 'West Virginia',
-      city: 'Parkersburg',
-      street: '2849 Fulton Street'
-    },
-    email: 'ekaterina.tankova@devias.io',
-    phone: '304-428-3097',
-    avatarUrl: '/images/avatars/avatar_3.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Cao Yu',
-    address: {
-      country: 'USA',
-      state: 'Bristow',
-      city: 'Iowa',
-      street: '1865  Pleasant Hill Road'
-    },
-    email: 'cao.yu@devias.io',
-    avatarUrl: '/images/avatars/avatar_4.png',
-    phone: '712-351-5711',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Alexa Richardson',
-    address: {
-      country: 'USA',
-      state: 'Georgia',
-      city: 'Atlanta',
-      street: '4894  Lakeland Park Drive'
-    },
-    email: 'alexa.richardson@devias.io',
-    phone: '770-635-2682',
-    avatarUrl: '/images/avatars/avatar_2.png',
-    createdAt: 1555016400000
-  },
-  {
-    id: uuid(),
-    name: 'Anje Keizer',
-    address: {
-      country: 'USA',
-      state: 'Ohio',
-      city: 'Dover',
-      street: '4158  Hedge Street'
-    },
-    email: 'anje.keizer@devias.io',
-    avatarUrl: '/images/avatars/avatar_5.png',
-    phone: '908-691-3242',
-    createdAt: 1554930000000
-  },
-  {
-    id: uuid(),
-    name: 'Clarke Gillebert',
-    address: {
-      country: 'USA',
-      state: 'Texas',
-      city: 'Dallas',
-      street: '75247'
-    },
-    email: 'clarke.gillebert@devias.io',
-    phone: '972-333-4106',
-    avatarUrl: '/images/avatars/avatar_6.png',
-    createdAt: 1554757200000
-  },
-  {
-    id: uuid(),
-    name: 'Adam Denisov',
-    address: {
-      country: 'USA',
-      state: 'California',
-      city: 'Bakerfield',
-      street: '317 Angus Road'
-    },
-    email: 'adam.denisov@devias.io',
-    phone: '858-602-3409',
-    avatarUrl: '/images/avatars/avatar_1.png',
-    createdAt: 1554670800000
-  },
-  {
-    id: uuid(),
-    name: 'Ava Gregoraci',
-    address: {
-      country: 'USA',
-      state: 'California',
-      city: 'Redondo Beach',
-      street: '2188  Armbrester Drive'
-    },
-    email: 'ava.gregoraci@devias.io',
-    avatarUrl: '/images/avatars/avatar_7.png',
-    phone: '415-907-2647',
-    createdAt: 1554325200000
-  },
-  {
-    id: uuid(),
-    name: 'Emilee Simchenko',
-    address: {
-      country: 'USA',
-      state: 'Nevada',
-      city: 'Las Vegas',
-      street: '1798  Hickory Ridge Drive'
-    },
-    email: 'emilee.simchenko@devias.io',
-    phone: '702-661-1654',
-    avatarUrl: '/images/avatars/avatar_8.png',
-    createdAt: 1523048400000
-  },
-  {
-    id: uuid(),
-    name: 'Kwak Seong-Min',
-    address: {
-      country: 'USA',
-      state: 'Michigan',
-      city: 'Detroit',
-      street: '3934  Wildrose Lane'
-    },
-    email: 'kwak.seong.min@devias.io',
-    avatarUrl: '/images/avatars/avatar_9.png',
-    phone: '313-812-8947'
-  },
-  {
-    id: uuid(),
-    name: 'Merrile Burgett',
-    address: {
-      country: 'USA',
-      state: 'Utah',
-      city: 'Salt Lake City',
-      street: '368 Lamberts Branch Road'
-    },
-    email: 'merrile.burgett@devias.io',
-    phone: '801-301-7894',
-    avatarUrl: '/images/avatars/avatar_10.png',
-    createdAt: 1522702800000
-  }
+    id: 2,
+    username: "anvh",
+    password: "123",
+    email: "anvh@gmail.com",
+    address: "TPHCM",
+    district: "Quận 7",
+    city: "TP.HCM",
+    name: "An",
+    phone: "123456",
+    dob: "1998-10-21T00:00:00.000Z",
+    card_id: "123456",
+    gender: "Nam",
+    role: 1,
+    avatar: "",
+    skill_tags: "[\"English\"]",
+    price_per_hour: 30000,
+    num_stars: 3,
+    num_rate: 3,
+    intro_desc: "Toi day Toan, Ly va Hoa",
+    degree: null,
+    account_status: null
+},
+{
+    id: 25,
+    username: "dungnq",
+    password: "123456",
+    email: "quocdung1612@gmail.com",
+    address: "336/1 Phạm Hữu Lầu",
+    district: "Quận 8",
+    city: "TP.HCM",
+    name: "Dũng",
+    phone: "0965577030",
+    dob: "1998-12-16T00:00:00.000Z",
+    card_id: "123456789",
+    gender: "Nam",
+    role: 2,
+    avatar: "http://localhost:55210/public/default-avatar",
+    skill_tags: null,
+    price_per_hour: null,
+    num_stars: null,
+    num_rate: null,
+    intro_desc: null,
+    degree: null,
+    account_status: null
+},
+{
+    id: 35,
+    username: "anvh2",
+    password: "123",
+    email: "anvo.ht209@gmail.com",
+    address: "227 Phạm Hùng",
+    district: "Quận 8",
+    city: "TP.HCM",
+    name: "Vo Hoang An",
+    phone: "123456",
+    dob: "1998-10-21T00:00:00.000Z",
+    card_id: "1234567",
+    gender: "Nam",
+    role: 1,
+    avatar: "http://localhost:55210/public/default-avatar",
+    skill_tags: "[\"English\"]",
+    price_per_hour: 20000,
+    num_stars: 4,
+    num_rate: 1,
+    intro_desc: "Toi day Toan, Ly va Hoa",
+    degree: "Dai hoc KHTN",
+    account_status: 1
+},
+{
+    id: 48,
+    username: "facebook_1001782109929",
+    password: null,
+    email: null,
+    address: null,
+    district: "Quận Bình Thạnh",
+    city: "TP.HCM",
+    name: "Kassie",
+    phone: null,
+    dob: null,
+    card_id: null,
+    gender: null,
+    role: 0,
+    avatar: null,
+    skill_tags: null,
+    price_per_hour: null,
+    num_stars: null,
+    num_rate: null,
+    intro_desc: "Toi day Toan, Ly va Hoa",
+    degree: null,
+    account_status: 1
+},
+{
+    id: 49,
+    username: "anvh3",
+    password: "123",
+    email: "anvo.ht209@gmail.com",
+    address: "TPHCM",
+    district: "Quận 2",
+    city: "TP.HCM",
+    name: "An",
+    phone: "123456",
+    dob: "1998-10-21T00:00:00.000Z",
+    card_id: "1234567",
+    gender: "Nam",
+    role: 2,
+    avatar: "http://localhost:55210/public/default-avatar",
+    skill_tags: null,
+    price_per_hour: null,
+    num_stars: null,
+    num_rate: null,
+    intro_desc: null,
+    degree: null,
+    account_status: 1
+},
+{
+    id: 50,
+    username: "anvh4",
+    password: "123",
+    email: "anvo.ht209@gmail.com",
+    address: "TPHCM",
+    district: "Quận 8",
+    city: "TP.HCM",
+    name: "An",
+    phone: "123456",
+    dob: "1998-10-21T00:00:00.000Z",
+    card_id: "1234567",
+    gender: "Nam",
+    role: 1,
+    avatar: "http://localhost:55210/public/default-avatar",
+    skill_tags: "[\"English\"]",
+    price_per_hour: 100000,
+    num_stars: 3,
+    num_rate: 4,
+    intro_desc: "Toi day Toan, Ly va Hoa",
+    degree: null,
+    account_status: 1
+},
+{
+    id: 51,
+    username: "anvh5",
+    password: "123",
+    email: "anvo.ht209@gmail.com",
+    address: "TPHCM",
+    district: "Quận 7",
+    city: "TP.HCM",
+    name: "An",
+    phone: "123456",
+    dob: "1998-10-21T00:00:00.000Z",
+    card_id: "1234567",
+    gender: "Nam",
+    role: 1,
+    avatar: "http://localhost:55210/public/default-avatar",
+    skill_tags: "[\"English\"]",
+    price_per_hour: 80000,
+    num_stars: 4,
+    num_rate: 3,
+    intro_desc: "Toi day Toan, Ly va Hoa",
+    degree: null,
+    account_status: 1
+}
 ];

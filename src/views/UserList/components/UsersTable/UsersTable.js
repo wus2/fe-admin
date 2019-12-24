@@ -118,7 +118,7 @@ const UsersTable = props => {
                   <TableCell>Email</TableCell>
                   <TableCell>Location</TableCell>
                   <TableCell>Phone</TableCell>
-                  <TableCell>Registration date</TableCell>
+                  <TableCell>DOB</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -141,7 +141,7 @@ const UsersTable = props => {
                       <div className={classes.nameContainer}>
                         <Avatar
                           className={classes.avatar}
-                          src={user.avatarUrl}
+                          src={user.avatar}
                         >
                           {getInitials(user.name)}
                         </Avatar>
@@ -150,12 +150,11 @@ const UsersTable = props => {
                     </TableCell>
                     <TableCell>{user.email}</TableCell>
                     <TableCell>
-                      {user.address.city}, {user.address.state},{' '}
-                      {user.address.country}
+                      {user.address}
                     </TableCell>
                     <TableCell>{user.phone}</TableCell>
                     <TableCell>
-                      {moment(user.createdAt).format('DD/MM/YYYY')}
+                      {moment(user.dob).format('DD/MM/YYYY')}
                     </TableCell>
                   </TableRow>
                 ))}
