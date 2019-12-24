@@ -10,10 +10,6 @@
       }
     ],
     "jsx-quotes": 1,
-    "linebreak-style": [
-      2,
-      "unix"
-    ],
     "quotes": [
       2,
       "single"
@@ -51,7 +47,9 @@
     "react/react-in-jsx-scope": 1,
     "react/self-closing-comp": 1,
     "react/sort-comp": 0,
-    "semi": 0
+    "semi": 0,
+    "linebreak-style": "off",
+    "react/jsx-max-props-per-line":"off"
   },
   "env": {
     "es6": true,
