@@ -1,6 +1,6 @@
 export { default as Account } from './Account';
 export { default as Dashboard } from './Dashboard';
-export { default as Icons } from './Icons';
+export { default as ContractsList } from './ContractsList';
 export { default as NotFound } from './NotFound';
 export { default as SkillsList } from './SkillsList';
 export { default as Settings } from './Settings';

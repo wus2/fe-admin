@@ -9,7 +9,7 @@ import {
   SkillsList as SkillListView,
   UserList as UserListView,
   Typography as TypographyView,
-  Icons as IconsView,
+  ContractsList as IconsView,
   Account as AccountView,
   Settings as SettingsView,
   SignUp as SignUpView,
@@ -53,7 +53,7 @@ const Routes = () => {
         component={IconsView}
         exact
         layout={MainLayout}
-        path="/icons"
+        path="/contracts"
       />
       <RouteWithLayout
         component={AccountView}
