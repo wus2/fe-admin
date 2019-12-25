@@ -23,6 +23,7 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
 import mockData from './data';
 import { StatusBullet } from 'components';
+import Moment from 'core/utils/TimeUtil';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -108,7 +109,7 @@ const LatestOrders = props => {
                     <TableCell>{order.ref}</TableCell>
                     <TableCell>{order.customer.name}</TableCell>
                     <TableCell>
-                      {moment(order.createdAt).format('DD/MM/YYYY')}
+                      {Moment(order.createdAt).format('DD/MM/YYYY')}
                     </TableCell>
                     <TableCell>
                       <div className={classes.statusContainer}>

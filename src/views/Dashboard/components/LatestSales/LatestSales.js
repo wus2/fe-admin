@@ -21,6 +21,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { useSelector } from 'react-redux';
 const useStyles = makeStyles(theme => ({
   root: {},
   chartContainer: {
@@ -43,7 +44,8 @@ const LatestSales = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
-  const [revenue, setRevenue] = useState(data);
+  const { dayRevenue, weekRevenue, monthRevenue } = useSelector(state => state.Revenue)
+  const [revenue, setRevenue] = useState(undefined);
   const [type, setType] = useState('total');
   const [time, setTime] = useState('day');
 
@@ -66,7 +68,6 @@ const LatestSales = props => {
               >
                 <MenuItem value={'total'}>Total</MenuItem>
                 <MenuItem value={'tutor'}>Tutor</MenuItem>
-                <MenuItem value={'skill'}>Skill</MenuItem>
               </Select>
             </FormControl>
             <FormControl variant="outlined" className={classes.formControl}>
@@ -76,23 +77,33 @@ const LatestSales = props => {
                 value={time}
                 onChange={event => {
                   setTime(event.target.value);
+                  switch (event.target.value) {
+                    case 'day':
+                      setRevenue(dayRevenue);
+                      break;
+                    case 'week':
+                      setRevenue(weekRevenue);
+                      break;
+                    case 'month':
+                      setRevenue(monthRevenue);
+                      break;
+                  }
                 }}
               >
                 <MenuItem value={'day'}>Day</MenuItem>
                 <MenuItem value={'week'}>Week</MenuItem>
                 <MenuItem value={'month'}>Month</MenuItem>
-                <MenuItem value={'year'}>Year</MenuItem>
               </Select>
             </FormControl>
           </>
         }
-        title="Reveneu review"
+        title="Revenue review"
       />
       <Divider />
       <CardContent>
         <div className={classes.chartContainer}>
           <Bar
-            data={revenue}
+            data={revenue ? revenue : dayRevenue}
             options={options}
           />
         </div>

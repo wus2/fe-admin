@@ -4,8 +4,6 @@ export const data1 = {
   labels: ['tutor1', 'tutor1', 'tutor1', 'tutor1', 'tutor1'],
   datasets: [
     {
-      label: 'This year',
-      backgroundColor: palette.primary.main,
       data: [1, 110, 115, 120, 125]
     },
   ]
