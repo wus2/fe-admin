@@ -103,22 +103,16 @@ const UsersTable = props => {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell padding="checkbox">
-                    <Checkbox
-                      checked={selectedUsers.length === contracts.length}
-                      color="primary"
-                      indeterminate={
-                        selectedUsers.length > 0 &&
-                        selectedUsers.length < contracts.length
-                      }
-                      onChange={handleSelectAll}
-                    />
-                  </TableCell>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Email</TableCell>
-                  <TableCell>Location</TableCell>
-                  <TableCell>Phone</TableCell>
-                  <TableCell>DOB</TableCell>
+                  <TableCell>Tutor</TableCell>
+                  <TableCell>Tutee</TableCell>
+                  <TableCell>Description</TableCell>
+                  <TableCell>Start</TableCell>
+                  <TableCell>Rent</TableCell>
+                  <TableCell>Rent price</TableCell>
+                  <TableCell>Create_time</TableCell>
+                  <TableCell>Status</TableCell>
+                  <TableCell>Stars</TableCell>
+                  <TableCell>Comment</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
