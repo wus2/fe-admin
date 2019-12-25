@@ -9,6 +9,7 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import ImageIcon from '@material-ui/icons/Image';
 import SettingsIcon from '@material-ui/icons/Settings';
 import UserListActions from 'reduxs/listUser/index';
+import SkillListActions from 'reduxs/listSkill/index';
 
 import { Profile, SidebarNav } from './components';
 import { useDispatch } from 'react-redux';
@@ -42,7 +43,8 @@ const Sidebar = props => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  dispatch(UserListActions.GetUserList());
+  dispatch(UserListActions.getList());
+  dispatch(SkillListActions.getList());
 
   const pages = [
     {

@@ -15,7 +15,9 @@ const useStyles = makeStyles(theme => ({
 const UserList = () => {
   const classes = useStyles();
 
-  const { users } = useSelector(state => state.UserList);
+  let { users } = useSelector(state => state.UserList);
+
+  if (!users) users = [];
 
   return (
     <div className={classes.root}>

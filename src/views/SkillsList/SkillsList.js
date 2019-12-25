@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { IconButton, Grid, Typography } from '@material-ui/core';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 import { SkillsToolbar, SkillCard } from './components';
-import mockData from './data';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,7 +25,9 @@ const useStyles = makeStyles(theme => ({
 const ProductList = () => {
   const classes = useStyles();
 
-  const [products] = useState(mockData);
+  let { skills } = useSelector(state => state.SkillList);
+
+  if (!skills) skills = [];
 
   return (
     <div className={classes.root}>
@@ -35,15 +37,15 @@ const ProductList = () => {
           container
           spacing={3}
         >
-          {products.map(product => (
+          {skills.map(skill => (
             <Grid
               item
-              key={product.id}
+              key={skill.id}
               lg={4}
               md={6}
               xs={12}
             >
-              <SkillCard product={product} />
+              <SkillCard skill={skill} />
             </Grid>
           ))}
         </Grid>

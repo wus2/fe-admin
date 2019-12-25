@@ -13,5 +13,5 @@ const GetUserList = () => async dispatch => {
 }
 
 export default {
-  GetUserList
+  getList: GetUserList
 };
