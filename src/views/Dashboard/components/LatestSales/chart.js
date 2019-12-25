@@ -1,20 +1,27 @@
 import palette from 'theme/palette';
 
-export const data = {
-  labels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug'],
+export const data1 = {
+  labels: ['tutor1', 'tutor1', 'tutor1', 'tutor1', 'tutor1'],
   datasets: [
     {
       label: 'This year',
       backgroundColor: palette.primary.main,
-      data: [18, 5, 19, 27, 29, 19, 20]
+      data: [1, 110, 115, 120, 125]
     },
-    {
-      label: 'Last year',
-      backgroundColor: palette.neutral,
-      data: [11, 20, 12, 29, 30, 25, 13]
-    }
   ]
 };
+
+export const data = {
+  labels: ['tutor', 'tutor', 'tutor', 'tutor', 'tutor'],
+  datasets: [
+    {
+      label: 'This year1',
+      backgroundColor: palette.primary.main,
+      data: [1, 3110, 1115, 7120, 1125,]
+    },
+  ]
+};
+
 
 export const options = {
   responsive: true,

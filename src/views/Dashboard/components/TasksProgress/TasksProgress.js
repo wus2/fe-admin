@@ -11,6 +11,7 @@ import {
   LinearProgress
 } from '@material-ui/core';
 import InsertChartIcon from '@material-ui/icons/InsertChartOutlined';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -42,6 +43,8 @@ const TasksProgress = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
+  const skillState = useSelector(state => state.SkillList);
+  const total_skill = skillState.skills ? skillState.skills.length : 'Loading...';
 
   return (
     <Card
@@ -60,9 +63,9 @@ const TasksProgress = props => {
               gutterBottom
               variant="body2"
             >
-              TASKS PROGRESS
+              TOTAL SKILLS
             </Typography>
-            <Typography variant="h3">75.5%</Typography>
+            <Typography variant="h3">{total_skill}</Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
