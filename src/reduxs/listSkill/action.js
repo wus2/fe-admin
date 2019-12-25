@@ -3,7 +3,7 @@ import * as HttpClient from '../../core/services/HttpClient';
 
 const GetSkillList = () => async dispatch => {
 
-  const url = `skills/page/1/limit/10`;
+  const url = `skills/page/1/limit/100`;
 
   const res = await HttpClient.sendGet(url);
 

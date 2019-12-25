@@ -22,6 +22,8 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import { useDispatch } from 'react-redux';
+import RevenueActions from 'reduxs/revenue/index';
 
 function Copyright() {
   return (
@@ -119,6 +121,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Dashboard() {
   const classes = useStyles();
+  const dispatch= useDispatch();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -127,7 +130,12 @@ export default function Dashboard() {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
+  dispatch(RevenueActions.getDayRevenue());
+  dispatch(RevenueActions.getWeekRevenue());
+  dispatch(RevenueActions.getMonthRevenue());
+  dispatch(RevenueActions.getTopDayTutorRevenue());
+  dispatch(RevenueActions.getTopWeekTutorRevenue());
+  dispatch(RevenueActions.getTopMonthTutorRevenue());
   return (
     <div className={classes.root}>
       <CssBaseline />

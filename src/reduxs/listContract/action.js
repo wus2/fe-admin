@@ -3,7 +3,7 @@ import * as HttpClient from '../../core/services/HttpClient';
 
 const GetContractList = () => async dispatch => {
 
-  const url = `listcontract/page/1/limit/10`;
+  const url = `listcontract/page/1/limit/100`;
 
   const res = await HttpClient.sendGet(url);
 

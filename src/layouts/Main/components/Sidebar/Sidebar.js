@@ -11,7 +11,6 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import UserListActions from 'reduxs/listUser/index';
 import SkillListActions from 'reduxs/listSkill/index';
 import ContractListActions from 'reduxs/listContract/index';
-import RevenueActions from 'reduxs/revenue/index';
 
 import { Profile, SidebarNav } from './components';
 import { useDispatch } from 'react-redux';
@@ -48,12 +47,7 @@ const Sidebar = props => {
   dispatch(UserListActions.getList());
   dispatch(SkillListActions.getList());
   dispatch(ContractListActions.getList());
-  dispatch(RevenueActions.getDayRevenue());
-  dispatch(RevenueActions.getWeekRevenue());
-  dispatch(RevenueActions.getMonthRevenue());
-  dispatch(RevenueActions.getTopDayTutorRevenue());
-  dispatch(RevenueActions.getTopWeekTutorRevenue());
-  dispatch(RevenueActions.getTopMonthTutorRevenue());
+  
 
   const pages = [
     {
