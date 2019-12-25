@@ -124,7 +124,7 @@ const LatestSales = props => {
               <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
-                value='total'
+                value={type}
                 onChange={handleTypeChange}
               >
                 <MenuItem value={'total'}>Total</MenuItem>

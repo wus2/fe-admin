@@ -123,7 +123,7 @@ const GetTopDayTutorRevenue = () => async dispatch => {
   const end = timestamp;
   const start = timestamp - 86400;
 
-  const url = getRevenueUrl + `start_time=${start}&end_time=${end}`;
+  const url = getTopTutorRevenueUrl + `start_time=${start}&end_time=${end}`;
 
   const res = await HttpClient.sendGet(url);
   const { data } = res;
@@ -153,10 +153,11 @@ const GetTopWeekTutorRevenue = () => async dispatch => {
   const date = new Date();
   const currentDate = String(date.getDate()).padStart(2, '0') + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
   const timestamp = convertDateToTimestamp(currentDate);
+  console.log(timestamp)
   const end = timestamp;
   const start = timestamp - 86400 * 7;
 
-  const url = getRevenueUrl + `start_time=${start}&end_time=${end}`;
+  const url = getTopTutorRevenueUrl + `start_time=${start}&end_time=${end}`;
 
   const res = await HttpClient.sendGet(url);
   const { data } = res;
@@ -189,7 +190,7 @@ const GetTopMonthTutorRevenue = () => async dispatch => {
   const end = convertDateToTimestamp(currentDate);
   const start = convertDateToTimestamp(leadDate);
 
-  const url = getRevenueUrl + `start_time=${start}&end_time=${end}`;
+  const url = getTopTutorRevenueUrl + `start_time=${start}&end_time=${end}`;
 
   const res = await HttpClient.sendGet(url);
   const { data } = res;
