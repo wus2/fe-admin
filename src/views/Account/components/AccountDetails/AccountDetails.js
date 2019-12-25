@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import moment from 'moment';
 import {
   Card,
   CardHeader,
@@ -13,6 +12,7 @@ import {
   TextField
 } from '@material-ui/core';
 import { useSelector } from 'react-redux';
+import Moment from 'core/utils/TimeUtil';
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -129,7 +129,7 @@ const AccountDetails = props => {
                 name="DOB"
                 required
                 SelectProps={{ native: true }}
-                value={moment(values.dob).format('DD/MM/YYYY')}
+                value={Moment(values.dob).format('DD/MM/YYYY')}
                 variant="outlined"
                 disabled
               />

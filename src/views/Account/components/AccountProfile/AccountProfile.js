@@ -17,6 +17,7 @@ import {
 } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import CurrentAccountActions from '../../../../reduxs/currentAccount/index';
+import Moment from 'core/utils/TimeUtil';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -76,7 +77,7 @@ const AccountProfile = props => {
               color="textSecondary"
               variant="body1"
             >
-              {moment(user.dob).format('DD/MM/YYYY')}
+              {Moment(user.dob).format('DD/MM/YYYY')}
             </Typography>
           </div>
           <Avatar
