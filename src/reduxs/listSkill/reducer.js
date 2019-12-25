@@ -16,6 +16,9 @@ const userReducer = (state = INIT_STATE, action) => {
         }
       });
       return { ...state };
+    case ActionTypes.ADD_NEW_SKILL:
+      state.skills[state.skills.length] = action.payload;
+      return { ...state };
     default:
       return { ...state };
   }
