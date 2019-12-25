@@ -76,6 +76,10 @@ const UsersTable = props => {
     dispatch(CurrentAccountActions.UpdateCurrentAccount(user));
   }
 
+  const toggleLockAccount = user => event => {
+    dispatch(CurrentAccountActions.ToggleStatus(user.id, user.account_status));
+  }
+
   return (
     <Card
       {...rest}
@@ -136,6 +140,7 @@ const UsersTable = props => {
                         className={classes.uploadButton}
                         color="primary"
                         variant="text"
+                        onClick={toggleLockAccount(user)}
                       >
                         {user.account_status === 1 ? <LockOpenIcon /> : <LockIcon />}
                       </Button>

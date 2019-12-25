@@ -73,6 +73,7 @@ const ProductCard = props => {
           <Button
             className={classes.statsItem}
             item
+            disabled
           >
             <DeleteIcon className={classes.statsIcon} />
             <Typography
