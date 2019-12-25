@@ -108,8 +108,118 @@ const GetMonthRevenue = () => async dispatch => {
   dispatch({ type: ActionTypes.GET_MONTH_REVENUE, payload: data })
 }
 
+
+/**
+ * @action to get top tutor
+ */
+
+const getTopTutorRevenueUrl = `/revenuetoptutor?`;
+
+const GetTopDayTutorRevenue = () => async dispatch => {
+
+  const date = new Date();
+  const currentDate = String(date.getDate()).padStart(2, '0') + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+  const timestamp = convertDateToTimestamp(currentDate);
+  const end = timestamp;
+  const start = timestamp - 86400;
+
+  const url = getRevenueUrl + `start_time=${start}&end_time=${end}`;
+
+  const res = await HttpClient.sendGet(url);
+  const { data } = res;
+  const revenue = [];
+  const revenueUser = [];
+  data.forEach(element => {
+    if (element.money !== undefined && element.name !== undefined && element.money !== null && element.name !== null) {
+      revenue.push(element.money);
+      revenueUser.push(element.name);
+    }
+  });
+
+  const payload = {
+    labels: revenueUser,
+    datasets: [
+      {
+        backgroundColor: palette.primary.main,
+        data: revenue,
+      },
+    ]
+  };
+  dispatch({ type: ActionTypes.GET_TOP_DAY_TUTOR, payload })
+}
+
+const GetTopWeekTutorRevenue = () => async dispatch => {
+
+  const date = new Date();
+  const currentDate = String(date.getDate()).padStart(2, '0') + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+  const timestamp = convertDateToTimestamp(currentDate);
+  const end = timestamp;
+  const start = timestamp - 86400 * 7;
+
+  const url = getRevenueUrl + `start_time=${start}&end_time=${end}`;
+
+  const res = await HttpClient.sendGet(url);
+  const { data } = res;
+  const revenue = [];
+  const revenueUser = [];
+  data.forEach(element => {
+    if (element.money !== undefined && element.name !== undefined && element.money !== null && element.name !== null) {
+      revenue.push(element.money);
+      revenueUser.push(element.name);
+    }
+  });
+
+  const payload = {
+    labels: revenueUser,
+    datasets: [
+      {
+        backgroundColor: palette.primary.main,
+        data: revenue,
+      },
+    ]
+  };
+  dispatch({ type: ActionTypes.GET_TOP_WEEK_TUTOR, payload })
+}
+
+const GetTopMonthTutorRevenue = () => async dispatch => {
+
+  const date = new Date();
+  const currentDate = String(date.getDate()).padStart(2, '0') + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+  const leadDate = '01/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+  const end = convertDateToTimestamp(currentDate);
+  const start = convertDateToTimestamp(leadDate);
+
+  const url = getRevenueUrl + `start_time=${start}&end_time=${end}`;
+
+  const res = await HttpClient.sendGet(url);
+  const { data } = res;
+  const revenue = [];
+  const revenueUser = [];
+  data.forEach(element => {
+    if (element.money !== undefined && element.name !== undefined && element.money !== null && element.name !== null) {
+      revenue.push(element.money);
+      revenueUser.push(element.name);
+    }
+  });
+
+  const payload = {
+    labels: revenueUser,
+    datasets: [
+      {
+        backgroundColor: palette.primary.main,
+        data: revenue,
+      },
+    ]
+  };
+  dispatch({ type: ActionTypes.GET_TOP_MONTH_TUTOR, payload })
+}
+
+
 export default {
   getDayRevenue: GetDayRevenue,
   getWeekRevenue: GetWeekRevenue,
   getMonthRevenue: GetMonthRevenue,
+  getTopDayTutorRevenue: GetTopDayTutorRevenue,
+  getTopWeekTutorRevenue: GetTopWeekTutorRevenue,
+  getTopMonthTutorRevenue: GetTopMonthTutorRevenue,
 };

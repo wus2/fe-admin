@@ -51,6 +51,9 @@ const Sidebar = props => {
   dispatch(RevenueActions.getDayRevenue());
   dispatch(RevenueActions.getWeekRevenue());
   dispatch(RevenueActions.getMonthRevenue());
+  dispatch(RevenueActions.getTopDayTutorRevenue());
+  dispatch(RevenueActions.getTopWeekTutorRevenue());
+  dispatch(RevenueActions.getTopMonthTutorRevenue());
 
   const pages = [
     {

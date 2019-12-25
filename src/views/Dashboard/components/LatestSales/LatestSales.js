@@ -44,10 +44,73 @@ const LatestSales = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
-  const { dayRevenue, weekRevenue, monthRevenue } = useSelector(state => state.Revenue)
+  const { dayRevenue, weekRevenue, monthRevenue, topDayRevenue, topWeekRevenue, topMonthRevenue } = useSelector(state => state.Revenue)
   const [revenue, setRevenue] = useState(undefined);
   const [type, setType] = useState('total');
   const [time, setTime] = useState('day');
+
+  const handleTypeChange = event => {
+    setType(event.target.value);
+    if (time === 'day') {
+      switch (event.target.value) {
+        case 'total':
+          setRevenue(dayRevenue);
+          break;
+        case 'tutor':
+          setRevenue(topDayRevenue);
+          break;
+      }
+    } else if (time === 'week') {
+      switch (event.target.value) {
+        case 'total':
+          setRevenue(weekRevenue);
+          break;
+        case 'tutor':
+          setRevenue(topWeekRevenue);
+          break;
+      }
+    } else {
+      switch (event.target.value) {
+        case 'total':
+          setRevenue(monthRevenue);
+          break;
+        case 'tutor':
+          setRevenue(topMonthRevenue);
+          break;
+      }
+    }
+  }
+
+  const handleTimeChange = event => {
+    setTime(event.target.value);
+    if (type === 'total') {
+
+      switch (event.target.value) {
+        case 'day':
+          setRevenue(dayRevenue);
+          break;
+        case 'week':
+          setRevenue(weekRevenue);
+          break;
+        case 'month':
+          setRevenue(monthRevenue);
+          break;
+      }
+    } else {
+      switch (event.target.value) {
+        case 'day':
+          setRevenue(topDayRevenue);
+          break;
+        case 'week':
+          setRevenue(topWeekRevenue);
+          break;
+        case 'month':
+          setRevenue(topMonthRevenue);
+          break;
+      }
+    }
+  }
+
 
   return (
     <Card
@@ -62,9 +125,7 @@ const LatestSales = props => {
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
                 value='total'
-                onChange={event => {
-                  setType(event.target.value);
-                }}
+                onChange={handleTypeChange}
               >
                 <MenuItem value={'total'}>Total</MenuItem>
                 <MenuItem value={'tutor'}>Tutor</MenuItem>
@@ -75,20 +136,7 @@ const LatestSales = props => {
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
                 value={time}
-                onChange={event => {
-                  setTime(event.target.value);
-                  switch (event.target.value) {
-                    case 'day':
-                      setRevenue(dayRevenue);
-                      break;
-                    case 'week':
-                      setRevenue(weekRevenue);
-                      break;
-                    case 'month':
-                      setRevenue(monthRevenue);
-                      break;
-                  }
-                }}
+                onChange={handleTimeChange}
               >
                 <MenuItem value={'day'}>Day</MenuItem>
                 <MenuItem value={'week'}>Week</MenuItem>
