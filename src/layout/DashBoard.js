@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -23,7 +23,6 @@ import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
 import { useDispatch } from 'react-redux';
-import RevenueActions from 'reduxs/revenue/index';
 
 function Copyright() {
   return (
@@ -130,12 +129,7 @@ export default function Dashboard() {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  dispatch(RevenueActions.getDayRevenue());
-  dispatch(RevenueActions.getWeekRevenue());
-  dispatch(RevenueActions.getMonthRevenue());
-  dispatch(RevenueActions.getTopDayTutorRevenue());
-  dispatch(RevenueActions.getTopWeekTutorRevenue());
-  dispatch(RevenueActions.getTopMonthTutorRevenue());
+
   return (
     <div className={classes.root}>
       <CssBaseline />
