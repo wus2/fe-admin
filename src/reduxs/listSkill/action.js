@@ -24,7 +24,20 @@ const UpdateSkillList = (skill) => async dispatch => {
   await HttpClient.sendPut(url, updatedSkill);
 }
 
+const AddNewSkill = skill => async dispatch => {
+  const url = `/addskill`;
+  const newSkill = {
+    skill: skill.tag,
+    desc: skill.desc,
+    image: null
+  }
+
+  dispatch({ type: ActionTypes.ADD_NEW_SKILL, payload: skill })
+  await HttpClient.sendPost(url, newSkill);
+}
+
 export default {
   getList: GetSkillList,
   updateList: UpdateSkillList,
+  addNewSkill: AddNewSkill,
 };
