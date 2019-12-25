@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const UsersTable = props => {
+const ContractsTable = props => {
   const { className, contracts, ...rest } = props;
 
   const classes = useStyles();
@@ -109,47 +109,30 @@ const UsersTable = props => {
                   <TableCell>Start</TableCell>
                   <TableCell>Rent</TableCell>
                   <TableCell>Rent price</TableCell>
-                  <TableCell>Create_time</TableCell>
+                  <TableCell>Create time</TableCell>
                   <TableCell>Status</TableCell>
                   <TableCell>Stars</TableCell>
                   <TableCell>Comment</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {contracts.slice(0, rowsPerPage).map(user => (
+                {contracts.slice(0, rowsPerPage).map(contract => (
                   <TableRow
                     className={classes.tableRow}
                     hover
-                    key={user.id}
-                    selected={selectedUsers.indexOf(user.id) !== -1}
+                    key={contract.cid}
+                    selected={selectedUsers.indexOf(contract.id) !== -1}
                   >
-                    <TableCell padding="checkbox">
-                      <Checkbox
-                        checked={selectedUsers.indexOf(user.id) !== -1}
-                        color="primary"
-                        onChange={event => handleSelectOne(event, user.id)}
-                        value="true"
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <div className={classes.nameContainer}>
-                        <Avatar
-                          className={classes.avatar}
-                          src={user.avatar}
-                        >
-                          {getInitials(user.name)}
-                        </Avatar>
-                        <Typography variant="body1">{user.name}</Typography>
-                      </div>
-                    </TableCell>
-                    <TableCell>{user.email}</TableCell>
-                    <TableCell>
-                      {user.address}
-                    </TableCell>
-                    <TableCell>{user.phone}</TableCell>
-                    <TableCell>
-                      {moment(user.dob).format('DD/MM/YYYY')}
-                    </TableCell>
+                    <TableCell>{contract.tutor_id}</TableCell>
+                    <TableCell>{contract.tutee_id}</TableCell>
+                    <TableCell>{contract.desc}</TableCell>
+                    <TableCell>{moment(contract.start_time).format('DD/MM/YYYY')}</TableCell>
+                    <TableCell>{contract.rent_time}h</TableCell>
+                    <TableCell>{contract.rent_price}VND</TableCell>
+                    <TableCell>{moment(contract.create_time).format('DD/MM/YYYY')}</TableCell>
+                    <TableCell>{contract.status}</TableCell>
+                    <TableCell>{contract.stars}</TableCell>
+                    <TableCell>{contract.comment}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -172,9 +155,9 @@ const UsersTable = props => {
   );
 };
 
-UsersTable.propTypes = {
+ContractsTable.propTypes = {
   className: PropTypes.string,
   contracts: PropTypes.array.isRequired
 };
 
-export default UsersTable;
+export default ContractsTable;

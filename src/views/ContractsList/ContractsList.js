@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 
 import { ContractsToolbar, ContractsTable } from './components';
-import mockData from './data';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,7 +16,9 @@ const useStyles = makeStyles(theme => ({
 const ContractsList = () => {
   const classes = useStyles();
 
-  const [contracts] = useState(mockData);
+  let { contracts } = useSelector(state => state.ContractList);
+
+  if (!contracts) contracts = [];
 
   return (
     <div className={classes.root}>
