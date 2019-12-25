@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
-import { Button } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { SearchInput } from 'components';
+import SkillListActions from 'reduxs/listSkill/index';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -36,8 +37,10 @@ const useStyles = makeStyles(theme => ({
 const ProductsToolbar = props => {
   const { className, ...rest } = props;
 
-  const [addDialogOpen, setAddDialogOpen] = useState(false);
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const [addDialogOpen, setAddDialogOpen] = useState(false);
+  const [addSkill, setAddSkill] = useState({});
 
   const handleCloseAddDialog = () => {
     setAddDialogOpen(false);
@@ -47,6 +50,12 @@ const ProductsToolbar = props => {
     setAddDialogOpen(true);
   }
 
+  const handleAdd = () => {
+
+    dispatch(SkillListActions.addNewSkill(addSkill))
+    setAddDialogOpen(false);
+  }
+
   return (
     <div
       {...rest}
@@ -54,6 +63,7 @@ const ProductsToolbar = props => {
     >
       <div className={classes.row}>
         <span className={classes.spacer} />
+
         <Button
           color="primary"
           variant="contained"
@@ -73,6 +83,7 @@ const ProductsToolbar = props => {
               id="name"
               label="Skill name"
               fullWidth
+              onBlur={(event) => { setAddSkill({ ...addSkill, tag: event.target.value }) }}
             />
             <TextField
               autoFocus
@@ -80,23 +91,23 @@ const ProductsToolbar = props => {
               id="name"
               label="Description"
               fullWidth
+              onBlur={(event) => { setAddSkill({ ...addSkill, desc: event.target.value }) }}
             />
           </DialogContent>
           <DialogActions>
             <Button onClick={handleCloseAddDialog} color="primary">
               Cancel
           </Button>
-            <Button onClick={handleCloseAddDialog} color="primary">
+            <Button onClick={handleAdd} color="primary">
               Add
           </Button>
           </DialogActions>
         </Dialog>
       </div>
       <div className={classes.row}>
-        <SearchInput
-          className={classes.searchInput}
-          placeholder="Search product"
-        />
+        <Typography variant="h1" component="h2">
+          SKILL MANAGEMENT
+        </Typography>
       </div>
     </div >
   );

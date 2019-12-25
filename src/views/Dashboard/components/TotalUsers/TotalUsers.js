@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import PeopleIcon from '@material-ui/icons/PeopleOutlined';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -44,7 +45,8 @@ const TotalUsers = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
-
+  const usersState = useSelector(state => state.UserList);
+  const total_user = usersState.users ? usersState.users.length : 'Loading...';
   return (
     <Card
       {...rest}
@@ -64,7 +66,7 @@ const TotalUsers = props => {
             >
               TOTAL USERS
             </Typography>
-            <Typography variant="h3">1,600</Typography>
+            <Typography variant="h3">{total_user}</Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
