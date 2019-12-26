@@ -76,11 +76,6 @@ const Sidebar = props => {
       href: '/contracts',
       icon: <ImageIcon />
     },
-    {
-      title: 'Settings',
-      href: '/settings',
-      icon: <SettingsIcon />
-    }
   ];
 
   return (
