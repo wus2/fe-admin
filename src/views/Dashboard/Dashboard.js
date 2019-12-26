@@ -82,9 +82,7 @@ const Dashboard = () => {
         >
           <UsersByDevice />
         </Grid>
-        <Grid
-          item
-          lg={4}
+        {/*Users By Device
           md={6}
           xl={3}
           xs={12}
@@ -98,8 +96,8 @@ const Dashboard = () => {
           xl={9}
           xs={12}
         >
-          <LatestOrders />
-        </Grid>
+          <LatestOrders /> 
+        </Grid> */}
       </Grid>
     </div>
   );

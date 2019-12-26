@@ -28,6 +28,8 @@ const GetDayRevenue = () => async dispatch => {
 
     const res = await HttpClient.sendGet(url);
     const { data } = res;
+
+    if (i === 0) dispatch({ type: ActionTypes.GET_TODAY_REVENUE, payload: data[0].money ? data[0].money : 0 });
     if (data) revenue.push(data[0].money ? data[0].money : 0);
     revenuedate.push(Moment(end).format('DD/MM/YYYY'));
   }

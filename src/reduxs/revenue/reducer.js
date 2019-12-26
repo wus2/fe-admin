@@ -1,6 +1,7 @@
 import Types from './actionTypes';
 
 const INIT_STATE = {
+  todayRevenue: undefined,
   dayRevenue: undefined,
   weekRevenue: undefined,
   monthRevenue: undefined,
@@ -14,6 +15,8 @@ const INIT_STATE = {
 
 const userReducer = (state = INIT_STATE, action) => {
   switch (action.type) {
+    case Types.GET_TODAY_REVENUE:
+      return { ...state, todayRevenue: action.payload }
     case Types.GET_DAY_REVENUE:
       return { ...state, dayRevenue: action.payload };
     case Types.GET_WEEK_REVENUE:

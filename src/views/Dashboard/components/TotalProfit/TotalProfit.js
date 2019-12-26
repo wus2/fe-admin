@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,6 +35,7 @@ const TotalProfit = props => {
   const { className, ...rest } = props;
 
   const classes = useStyles();
+  const { todayRevenue } = useSelector(state => state.Revenue);
 
   return (
     <Card
@@ -58,7 +60,7 @@ const TotalProfit = props => {
               color="inherit"
               variant="h3"
             >
-              $23,200
+              {todayRevenue ? todayRevenue + ' VND' : 'Loading...'}
             </Typography>
           </Grid>
           <Grid item>

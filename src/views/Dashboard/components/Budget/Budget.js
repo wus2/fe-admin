@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/styles';
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import MoneyIcon from '@material-ui/icons/Money';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -45,6 +46,8 @@ const Budget = props => {
 
   const classes = useStyles();
 
+  const { todayRevenue } = useSelector(state => state.Revenue);
+
   return (
     <Card
       {...rest}
@@ -62,9 +65,9 @@ const Budget = props => {
               gutterBottom
               variant="body2"
             >
-              BUDGET
+              TODAY REVENUE
             </Typography>
-            <Typography variant="h3">$24,000</Typography>
+            <Typography variant="h3">{todayRevenue ? todayRevenue / 0.25 + ' VND' : 'Loading...'}</Typography>
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
@@ -73,18 +76,17 @@ const Budget = props => {
           </Grid>
         </Grid>
         <div className={classes.difference}>
-          <ArrowDownwardIcon className={classes.differenceIcon} />
           <Typography
             className={classes.differenceValue}
             variant="body2"
           >
-            12%
+            {/* 12% */}
           </Typography>
           <Typography
             className={classes.caption}
             variant="caption"
           >
-            Since last month
+            {/* Since last month */}
           </Typography>
         </div>
       </CardContent>

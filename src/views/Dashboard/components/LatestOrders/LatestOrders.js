@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import clsx from 'clsx';
 import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
+import { NavLink as RouterLink } from 'react-router-dom';
 import {
   Card,
   CardActions,
@@ -57,23 +58,21 @@ const LatestOrders = props => {
   const classes = useStyles();
 
   const [orders] = useState(mockData);
-
+  const CustomRouterLink = forwardRef((props, ref) => (
+    <div
+      ref={ref}
+      style={{ flexGrow: 1 }}
+    >
+      <RouterLink {...props} />
+    </div>
+  ));
   return (
     <Card
       {...rest}
       className={clsx(classes.root, className)}
     >
       <CardHeader
-        action={
-          <Button
-            color="primary"
-            size="small"
-            variant="outlined"
-          >
-            New entry
-          </Button>
-        }
-        title="Latest Orders"
+        title="Latest Contracts"
       />
       <Divider />
       <CardContent className={classes.content}>
@@ -134,6 +133,8 @@ const LatestOrders = props => {
           color="primary"
           size="small"
           variant="text"
+          component={CustomRouterLink}
+          to={'/contracts'}
         >
           View all <ArrowRightIcon />
         </Button>
